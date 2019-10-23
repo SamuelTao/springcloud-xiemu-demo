@@ -21,3 +21,6 @@
 #### 5-zuul-server
  网关服务
  - 前端请求先通过nginx走到zuul网关服务，zuul负责路由转发、请求过滤等网关接入层的功能，默认和ribbon整合实现了负载均衡
+
+#### 6-config-server
+配置服务
