@@ -1,0 +1,26 @@
+server:
+  port: 8763
+
+spring:
+  application:
+    name: greet-service
+
+security:
+  user:
+    name: admin
+    password: 123456
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:8761/eureka/
+
+
+feign:
+ client:
+  config:
+   default:
+    connectTimeout: 5000
+    readTimeout: 5000
+    loggerLevel: basic
+ hystrix:
+   enabled: true
