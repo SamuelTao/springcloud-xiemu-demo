@@ -1,0 +1,23 @@
+security:
+  user:
+    name: admin
+    password: 123456
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:8761/eureka/
+server:
+  port: 8766
+spring:
+  application:
+    name: zuul-server
+
+#### 相当于 访问此服务的/say/hello/**等价于 访问   eureka-client服务的/** ，并支持负载均衡
+zuul:
+  routes:
+    say-hello:
+      path: /say/hello/**
+      serviceId: eureka-client
+    greeting:
+      path: /greeting66/**
+      serviceId: greet-service
